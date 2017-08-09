@@ -48,8 +48,34 @@ class UserController extends Controller
     {
         return view('user.signup');
     }
+
     public function  postSignUp(Request $request)
     {
+        $this->validate($request, [
+            'username' => 'required|min:6|max:20|unique:users,name',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6|max:20',
+            'confirmpass' => 'required|same:password',
+            'phone_number' => 'required',
+            'job' => 'required',
+        ], [
+                'username.required' => 'Chưa nhập tên đăng nhập',
+                'username.min' => 'Tên đăng nhập phải ít nhất có 6 ký tự',
+                'username.max' => 'Tên đăng nhập tối đa 20 ký tự',
+                'username.unique' => 'Tên đăng nhập đã tồn tại',
+                'email.required' => 'Chưa nhập email',
+                'email.unique' => 'Email đã tồn tại',
+                'email.email' => 'Email không đúng',
+                'password.required' => 'Chưa nhập mật khẩu',
+                'password.min' => 'Mật khẩu phải ít nhất có 6 ký tự',
+                'password.max' => 'Mật khẩu tối đa có 20 ký tự',
+                'confirmpass.required' => 'Chưa nhập lại mật khẩu',
+                'confirmpass.same' => 'Mật khẩu không khớp',
+                'phone_number.required' => 'Chưa nhập số điện thoại',
+                'job.required' => 'Chưa nhập nghề nghiệp'
+            ]
+        );
+
         do {
             $code = str_random(30);
             $user_code = User::where('code', $code)->first();
@@ -88,5 +114,10 @@ class UserController extends Controller
             $user->save();
             return redirect('login')->with('noti-success', 'Kích hoạt tài khoản thành công!');
         }
+    }
+
+    public function getLogOut(){
+        Auth::logout();
+        return redirect('home');
     }
 }

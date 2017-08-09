@@ -19,8 +19,16 @@ Route::get('home', function (){
     return view('pages.home');
 });
 
+//--------------------- Admin Page -----------------------------------------------//
+
+//Route::group(['prefix' => 'adminpage', 'middleware' => 'admin'], function (){
+//    return view('admin.')
+//});
+
+//--------------------- User -----------------------------------------------------//
 Route::get('login', 'UserController@getLogin');
 Route::post('login', 'UserController@postLogin');
 Route::get('signup', 'UserController@getSignUp');
 Route::post('signup', 'UserController@postSignUp');
+Route::get('logout', 'UserController@getLogOut');
 Route::get('active/{code?}', 'UserController@activeCode');

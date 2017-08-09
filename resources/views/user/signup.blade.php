@@ -7,14 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Teach Online</title>
     <base href="{{ asset('') }}">
-
-    <!-- Bootstrap -->
-    <style>
-        .validation-message {
-            color: red;
-            font-weight: normal;
-        }
-    </style>
+    <link rel="stylesheet" href="public/css/signup.css">
 
 </head>
 <body>
@@ -24,17 +17,16 @@
 <!-- End header-->
 
 <!-- form signup -->
-<div class="container">
+<div class="container signup-body">
     <div class="row">
         <div class="col-md-12">
             <div id="signupbox" class="mainbox col-md-6 col-md-offset-3">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <div class="panel-title" ><b>Đăng ký</b></div>
+                        <div class="panel-title text-center"><b>Đăng ký</b></div>
                     </div>
                     <div class="panel-body" >
                         <form id="signupform" class="form-horizontal" role="form" method="post" action="{{ url('signup') }}">
-                            {{--{{csrf_field()}}--}}
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group">
                                 <label for="lastname" class="col-md-3 control-label">Tên đăng nhập</label>
@@ -61,20 +53,20 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="phone_number" class="col-md-3 control-label" style="padding-top: 0px">Phone Number</label>
+                                <label for="phone" class="col-md-3 control-label">Phone</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="phone_number" placeholder="phone_number">
+                                    <input type="text" class="form-control" name="phone_number" placeholder="Your Phone">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="job" class="col-md-3 control-label" style="padding-top: 0px">Job</label>
+                                <label for="job" class="col-md-3 control-label">Job</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="job" placeholder="Job">
+                                    <input type="text" class="form-control" name="job" placeholder="Your Job">
                                 </div>
                             </div>
 
                             <div id="signup-btn" class="form-group">
-                                <button type="submit" class="btn btn-primary btn-block">Đăng ký</button>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Đăng ký</button>
                             </div>
                         </form>
                     </div>
@@ -108,68 +100,70 @@
 </div>
 
 <!-- js-->
-{{--<script src="public/js/bootstrap.min.js" type="text/javascript"></script>--}}
-{{--<script src="public/js/jquery-3.1.1.min.js"></script>--}}
-{{--<script src="public/js/bootstrap.min.js"></script>--}}
-{{--<script src="public/js/jquery.validate.js"></script>--}}
-{{--<script src="public/js/additional-methods.min.js"></script>--}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
 
-{{--<script>--}}
-    {{--$(document).ready(function() {--}}
-        {{--$("#signupform").validate({--}}
-            {{--rules: {--}}
-                {{--username: {--}}
-                    {{--required: true,--}}
-                    {{--minlength: 6,--}}
-                    {{--maxlength: 20--}}
-                {{--},--}}
-                {{--email: {--}}
-                    {{--required: true,--}}
-                    {{--email: true,--}}
-                    {{--vnumail: true--}}
-                {{--},--}}
-                {{--password: {--}}
-                    {{--required: true,--}}
-                    {{--minlength: 6--}}
-                {{--},--}}
-                {{--confirmpass: {--}}
-                    {{--required: true,--}}
-                    {{--equalTo: "#password"--}}
-                {{--}--}}
-            {{--},--}}
+<script>
+    $(document).ready(function() {
+        $("#signupform").validate({
+            rules: {
+                username: {
+                    required: true,
+                    minlength: 6,
+                    maxlength: 20
+                },
+                email: {
+                    required: true,
+                    email: true,
+                },
+                password: {
+                    required: true,
+                    minlength: 6
+                },
+                confirmpass: {
+                    required: true,
+                    equalTo: "#password"
+                },
+                phone_number:{
+                    required: true,
+                },
+                job:{
+                    required: true,
+                }
+            },
 
-            {{--messages: {--}}
-                {{--username: {--}}
-                    {{--required: "<span class='validation-message'>Tên đăng nhập không được để trống</span>",--}}
-                    {{--minlength: "<span class='validation-message'>Tên đăng nhập tối thiểu có 6 ký tự</span>",--}}
-                    {{--maxlength: "<span class='validation-message'>Tên đăng nhập tối đa 20 ký tự</span>"--}}
-                {{--},--}}
-                {{--email: {--}}
-                    {{--required: "<span class='validation-message'>Email không được để trống</span>",--}}
-                    {{--email: "<span class='validation-message'>Email không hợp lệ</span>",--}}
-                    {{--vnumail: "<span class='validation-message'>Sử email @vnu.edu.vn</span>"--}}
-                {{--},--}}
-                {{--password: {--}}
-                    {{--required: "<span class='validation-message'>Mật khẩu không được để trống</span>",--}}
-                    {{--minlength: "<span class='validation-message'>Mật khẩu tối thiểu có 6 ký tự</span>"--}}
-                {{--},--}}
-                {{--confirmpass: {--}}
-                    {{--required: "<span class='validation-message'>Không được bỏ trống</span>",--}}
-                    {{--equalTo: "<span class='validation-message'>Mật khẩu không khớp</span>"--}}
-                {{--}--}}
-            {{--}--}}
-        {{--});--}}
+            messages: {
+                username: {
+                    required: "<span class='validation-message'>Tên đăng nhập không được để trống</span>",
+                    minlength: "<span class='validation-message'>Tên đăng nhập tối thiểu có 6 ký tự</span>",
+                    maxlength: "<span class='validation-message'>Tên đăng nhập tối đa 20 ký tự</span>"
+                },
+                email: {
+                    required: "<span class='validation-message'>Email không được để trống</span>",
+                    email: "<span class='validation-message'>Email không hợp lệ</span>",
+                },
+                password: {
+                    required: "<span class='validation-message'>Mật khẩu không được để trống</span>",
+                    minlength: "<span class='validation-message'>Mật khẩu tối thiểu có 6 ký tự</span>"
+                },
+                confirmpass: {
+                    required: "<span class='validation-message'>Không được bỏ trống</span>",
+                    equalTo: "<span class='validation-message'>Mật khẩu không khớp</span>"
+                },
+                phone_number: {
+                    required: "<span class='validation-message'>Phone không được bỏ trống</span>"
+                },
+                job:{
+                    required: "<span class='validation-message'>Job không được bỏ trống</span>"
+                }
+            }
+        });
 
-        {{--jQuery.validator.setDefaults({--}}
-            {{--debug: true,--}}
-            {{--success: "valid"--}}
-        {{--});--}}
-
-        {{--jQuery.validator.addMethod("vnumail", function(value, element) {--}}
-            {{--return /^.+@vnu.edu.vn$/.test(value);--}}
-        {{--}, "Only @vnu.edu.vn are allowed");--}}
-    {{--});--}}
-{{--</script>--}}
+        jQuery.validator.setDefaults({
+            debug: true,
+            success: "valid"
+        });
+    });
+</script>
 
 </body>
 

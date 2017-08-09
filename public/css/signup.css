@@ -1,0 +1,39 @@
+.signup-body {
+  margin-top: 100px;
+}
+
+.signup-body .panel-info {
+  border-radius: 0px;
+}
+
+.signup-body .panel-info .panel-heading .panel-title {
+  font-size: 20px;
+}
+
+.signup-body .panel-info .panel-body .input-group {
+  margin-bottom: 20px;
+}
+
+.signup-body .panel-info .panel-body .input-group .input-group-addon,
+.signup-body .panel-info .panel-body .input-group input {
+  border-radius: 0px;
+}
+
+.signup-body .panel-info .panel-body #sizing-addon1 {
+  height: 40px;
+}
+
+.signup-body .panel-info .panel-body #signup-btn {
+  width: 70%;
+  margin-left: 15%;
+}
+
+.signup-body .panel-info .panel-body #signup-btn button {
+  border-radius: 0px;
+}
+
+.validation-message {
+  color: red;
+  font-weight: normal;
+}
+

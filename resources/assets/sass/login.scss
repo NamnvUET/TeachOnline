@@ -1,0 +1,26 @@
+.login-body{
+  margin-top: 100px;
+  .panel-info{
+    border-radius: 0px;
+    .panel-heading{
+      .panel-title{
+        font-size: 20px;
+      }
+    }
+    .panel-body{
+      .input-group{
+        margin-bottom: 20px;
+        .input-group-addon, input{
+          border-radius: 0px;
+        }
+      }
+      #login-btn{
+        width: 70%;
+        margin-left: 15%;
+        button{
+          border-radius: 0px;
+        }
+      }
+    }
+  }
+}
