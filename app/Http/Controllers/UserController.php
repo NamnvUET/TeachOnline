@@ -11,7 +11,13 @@ use Mail;
 
 class UserController extends Controller
 {
-    //
+    //---------------- User Management -----------------------------//
+    public function getList()
+    {
+        $users = User::paginate(10);
+        return view('admin.users.list', ['users' => $users]);
+    }
+    //------------- Login, Logout, Send Active Code -----------------------//
     public function getLogin()
     {
         return view('user.login');
