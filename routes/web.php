@@ -11,31 +11,131 @@
 |
 */
 //-------------------- Test Google Drive Api --------------------------------------//
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/myprofile',function (){
+    return view('pages.myprofile');
 });
+//
+Route::get('home', 'PageController@home');
 
-Route::get('home', function (){
-    return view('pages.home');
-});
+Route::get('category/{id?}/{name?}', 'PageController@category');
 
-Route::get('testdrive',function (){
-    return view('testapi');
-});
+Route::get('class/{id?}/{name?}', 'PageController@classinfo');
 
-Route::get('test2',function(){
-    return view('testdriveapi');
-});
+Route::get('allCourse', 'PageController@allCourse');
 
-Route::get('test3',function (){
-    return view('testdriveapi3');
-});
+Route::post('search', 'PageController@postSearch');
+
+Route::get('registerClass/{user_id?}/{class_id?}', 'PageController@registerClass');
+
+Route::get('learn/class/{class_id?}/{name?}', 'PageController@getClass');
+
+Route::get('lesson/{lesson_id?}/{name?}', 'PageController@getLesson');
+
+Route::post('comment/{lesson_id?}/{name?}', 'commentController@postComment');
+
+Route::get('myCourse', 'PageController@getMyCourse');
+
+Route::get('ownerCourse', 'PageController@getOwnerCourse');
+
+Route::get('manageClass/{class_id?}/{name?}', 'PageController@getModifyClass');
+
+Route::post('manageClass/{class_id?}/{name?}', 'PageController@postModifyClass');
+
+Route::get('manageClass/{class_id?}/{name?}/listLesson', 'PageController@getListLesson');
+
+Route::get('manageClass/{class_id?}/{name?}/addLesson', 'PageController@getAddLesson');
+
+Route::post('manageClass/{class_id?}/{name?}/addLesson', 'PageController@postAddLesson');
+
+Route::get('manageClass/{class_id?}/{name?}/modifyLesson/{lesson_id?}', 'PageController@getModifyLesson');
+
+Route::post('manageClass/{class_id?}/{name?}/modifyLesson/{lesson_id?}', 'PageController@postModifyLesson');
+
+Route::post('manageClass/{class_id?}/{name?}/deleteLesson/{lesson_id?}', 'PageController@postDeleteLesson');
+
+Route::get('manageClass/{class_id?}/{name?}/{lesson_id?}/allcomment', 'PageController@getAllComment');
+
+Route::get('manageClass/{class_id?}/{name?}/{lesson_id?}/duyetcomment', 'PageController@getDuyetComment');
+
+Route::get('manageClass/{class_id?}/{name?}/{lesson_id?}/{comment_id?}/chophep', 'PageController@getChophep');
+
+Route::get('manageClass/{class_id?}/{name?}/{lesson_id?}/deleleComment/{comment_id?}', 'PageController@getDeleteComment');
+
+Route::get('editMyProfile', 'PageController@getEditMyProfile');
+
+
 
 //--------------------- Admin Page -----------------------------------------------//
 
 Route::group(['prefix' => 'adminpage', 'middleware' => 'admin'], function (){
+    //----------- User ------------------//
     Route::group(['prefix' => 'user'],function (){
        Route::get('list', 'UserController@getList');
+       Route::get('add', 'UserController@getAdd');
+       Route::post('add', 'UserController@postAdd');
+       Route::get('changerole/{id}', 'UserController@getChangeRole');
+       Route::post('changerole/{id}', 'UserController@postChangeRole');
+    });
+    //-----------Classes-----------------//
+    Route::group(['prefix' => 'class'],function (){
+        Route::get('list', 'classController@getList');
+        Route::get('add', 'classController@getAdd');
+        Route::post('add', 'classController@postAdd');
+        Route::get('modify/{id}', 'classController@getModify');
+        Route::post('modify/{id}', 'classController@postModify');
+        Route::get('delete/{id}', 'classController@getDelete');
+    });
+
+    //--------- Lesson ------------------//
+    Route::group(['prefix' => 'lesson'], function(){
+       Route::get('list', 'lessonController@getList');
+       Route::get('add', 'lessonController@getAdd');
+       Route::post('add', 'lessonController@postAdd');
+       Route::get('modify/{id}', 'lessonController@getModify');
+       Route::post('modify/{id}', 'lessonController@postModify');
+       Route::get('delete/{id}', 'lessonController@getDelete');
+    });
+    //--------- Category ----------------//
+    Route::group(['prefix' => 'category'], function(){
+       Route::get('list', 'categoryController@getList');
+       Route::get('add', 'categoryController@getAdd');
+       Route::post('add', 'categoryController@postAdd');
+       Route::get('modify/{id}', 'categoryController@getModify');
+       Route::post('modify/{id}', 'categoryController@postModify');
+       Route::get('delete/{id}', 'categoryController@getDelete');
+
+    });
+    //----------- Document ---------------//
+    Route::group(['prefix' => 'document'], function(){
+        Route::get('list', 'documentController@getList');
+        Route::get('add', 'documentController@getAdd');
+        Route::post('add', 'documentController@postAdd');
+        Route::get('modify/{id}', 'documentController@getModify');
+        Route::post('modify/{id}', 'documentController@postModify');
+        Route::get('delete/{id}', 'documentController@getDelete');
+    });
+    //------------- Class Category --------------//
+    Route::group(['prefix' => 'class_category'],function (){
+        Route::get('list', 'class_categoryController@getList');
+        Route::get('add', 'class_categoryController@getAdd');
+        Route::post('add', 'class_categoryController@postAdd');
+        Route::get('modify/{class_id}', 'class_categoryController@getModify');
+        Route::post('modify/{class_id}', 'class_categoryController@postModify');
+        Route::get('delete/{class_id}', 'class_categoryController@getDelete');
+    });
+    //--------- Comment -----------------//
+    Route::group(['prefix' => 'comment'], function(){
+        Route::get('list', 'commentController@getList');
+        Route::get('modify/{id}', 'commentController@getModify');
+        Route::post('modify/{id}', 'commentController@postModify');
+        Route::get('delete/{id}', 'commentController@getDelete');
+    });
+    //------------- Video -----------------//
+    Route::group(['prefix' => 'video'], function(){
+        Route::get('list', 'videoController@getList');
+        Route::get('modify/{id}', 'videoController@getModify');
+        Route::post('modify/{id}', 'videoController@postModify');
+        Route::get('delete/{id}', 'videoController@getDelete');
     });
 });
 

@@ -6,17 +6,66 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\User;
-
+use App\Categories;
 use Mail;
 
 class UserController extends Controller
 {
+    function __construct() {
+        $categories = Categories::all();
+        view()->share('categories', $categories);
+    }
     //---------------- User Management -----------------------------//
     public function getList()
     {
-        $users = User::paginate(10);
+        $users = User::all();
         return view('admin.users.list', ['users' => $users]);
     }
+
+    public function getAdd()
+    {
+        return view('admin.users.add');
+    }
+    public function postAdd(Request $request)
+    {
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->phone_number = $request->phone_number;
+        $user->job = $request->job;
+        $user->code = 'gg';
+        $user->active = 0;
+        $user->is_admin = 0;
+
+        if($request->hasFile('avatar'))
+        {
+            $file = $request->file('avatar');
+            $name = $file->getClientOriginalName();
+            $extension = strtolower($file->getClientOriginalExtension());
+            $path = "[teach-online]".str_random(10).'-'.$name;
+            $file->move('public/avatar',$path);
+            $user->avatar = $path;
+        }
+        $user->save();
+        return redirect('adminpage/user/add')->with('noti', 'Thêm thành công');
+    }
+
+    public function getChangeRole($id)
+    {
+        $user = User::find($id);
+        return view('admin.users.changeRole', ['user' => $user]);
+    }
+
+    public function postChangeRole($id, Request $request)
+    {
+        $user = User::find($id);
+        $user->is_admin = $request->is_admin;
+        $user->save();
+
+        return redirect('adminpage/user/changerole/'.$id)->with('noti', 'Đổi quyền thành công');
+    }
+
     //------------- Login, Logout, Send Active Code -----------------------//
     public function getLogin()
     {

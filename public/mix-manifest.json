@@ -3,5 +3,10 @@
     "/css/app.css": "/css/app.css",
     "/css/home.css": "/css/home.css",
     "/css/login.css": "/css/login.css",
-    "/css/signup.css": "/css/signup.css"
+    "/css/signup.css": "/css/signup.css",
+    "/css/homeHeader.css": "/css/homeHeader.css",
+    "/css/homeBody.css": "/css/homeBody.css",
+    "/css/allCourse.css": "/css/allCourse.css",
+    "/css/classInfo.css": "/css/classInfo.css",
+    "/css/courseInfo.css": "/css/courseInfo.css"
 }

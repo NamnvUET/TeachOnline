@@ -7,6 +7,19 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Teach Online</title>
     <base href="{{ asset('') }}">
+    <!--Font-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato" type="text/css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{{asset('node_modules/bootstrap/dist/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('node_modules/bootstrap/dist/css/bootstrap-theme.css')}}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script
+            src="http://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+    </script>
+    <script src="{{asset('node_modules/bootstrap/dist/js/bootstrap.js')}}"></script>
     <link rel="stylesheet" href="public/css/login.css">
 
 </head>

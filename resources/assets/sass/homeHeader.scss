@@ -1,0 +1,45 @@
+header{
+  .navbar-fixed-top{
+    border-width: 0 0 0px;
+  }
+  nav{
+    margin-bottom: 0px !important;
+    .container-fluid{
+      min-height: 70px;
+      padding-top: 7px;
+      background-color: white;
+      .list-category{
+        i, span{
+          font-size: 20px;
+          color: green;
+        }
+      }
+      #header-search{
+        input{
+          width: 350px;
+        }
+      }
+      .selected{
+        left: 3%;
+        top: 0;
+        position: absolute;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 11px solid #ffffff;
+        margin: -11px 0px 0px 17px;
+        display: inline-block;
+      }
+      .account{
+        .user-dropdown{
+          .dropdown-toggle{
+            padding-top: 5px;
+            padding-bottom: 10px;
+            img{
+              width: 35px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

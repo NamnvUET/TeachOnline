@@ -2,7 +2,7 @@
 <div class="wrapper">
     <header class="main-header">
         <!-- Logo -->
-        <a href="node_modules/admin-lte/index2.html" class="logo">
+        <a href="{{url('home')}}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
@@ -23,13 +23,22 @@
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="../../node_modules/admin-lte/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                            <span class="hidden-xs">{{Auth::user()->name}}</span>
+                            @if(Auth::user()->avatar == NULL)
+                                <img src="{{asset('node_modules/admin-lte/dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
+                                <span class="hidden-xs">{{Auth::user()->name}}</span>
+                            @else
+                                <img src="{{asset('public/avatar').'/'.Auth::user()->avatar}}" class="user-image" alt="User Image">
+                                <span class="hidden-xs">{{Auth::user()->name}}</span>
+                            @endif
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="../../node_modules/admin-lte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                @if(Auth::user()->avatar == NULL)
+                                    <img src="{{asset('node_modules/admin-lte/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+                                @else
+                                    <img src="{{asset('public/avatar').'/'.Auth::user()->avatar}}" class="img-circle" alt="User Image">
+                                @endif
 
                                 <p>
                                     {{Auth::user()->name}}

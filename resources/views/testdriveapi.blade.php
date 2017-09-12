@@ -9,9 +9,9 @@
 
 <pre id="content"></pre>
 
-<iframe width="420" height="315"
-        src="https://drive.google.com/file/d/0B7o0Vx20V9IcYWZ5M2VYUFVnRVE/preview?usp=drivesdk" id="gg">
-</iframe>
+{{--<iframe width="420" height="315"--}}
+        {{--src="https://drive.google.com/file/d/0B7o0Vx20V9IcYWZ5M2VYUFVnRVE/preview?usp=drivesdk" id="gg">--}}
+{{--</iframe>--}}
 
 <script type="text/javascript">
     // Client ID and API key from the Developer Console
@@ -56,8 +56,8 @@
      */
     function updateSigninStatus(isSignedIn) {
         if (isSignedIn) {
-//            console.log(1);
-            listFiles();
+            console.log(1);
+//            listFiles();
         }
     }
     /**
@@ -79,27 +79,24 @@
         var pre = document.getElementById('gg');
         pre.src = url;
     }
-    function listFiles() {
+//    function listFiles() {
+//        gapi.client.request({
+//            'path': '/drive/v2/files/'+"0B7o0Vx20V9IcYWZ5M2VYUFVnRVE",
+//            'method' : 'GET',
+//        }).then(function (response) {
+//            console.log(response);
+//        });
+//    }
+    function insertFolder(){
         gapi.client.request({
-            'path': '/drive/v2/files/'+'0B7o0Vx20V9IcS192QTlOeU5oREk'+'/children',
-            'method' : 'GET',
-        }).then(function (response) {
-            var videos = response.result.items;
-            if(videos &&videos.length > 0)
-            {
-                for(var i= 0;i< videos.length;i++)
-                {
-                    var video = videos[i];
-                    var videoId = video.id;
-                    gapi.client.request({
-                        'path' : 'https://www.googleapis.com/drive/v2/files/'+videoId,
-                        'method' : 'GET',
-                    }).then(function (response) {
-//                        console.log(response);
-                    })
-                }
-            }
-        })
+            'path': 'drive/v2/files/'+ '0B7o0Vx20V9IcS192QTlOeU5oREk' + '/chirlden',
+            'method': 'POST',
+            'uploadType': 'multipart',
+            'headers': {
+                'Content-Type': 'multipart/mixed; boundary="' + boundary + '"'
+            },
+            'body': multipartRequestBody
+        });
     }
 
 </script>

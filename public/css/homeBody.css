@@ -1,0 +1,302 @@
+#myCarousel .one,
+#myCarousel .two {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+footer .container .social .fa {
+  padding-top: 11px;
+  height: 47px;
+  width: 47px;
+  margin: 5px 3px;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  background: #15a4fa;
+  color: white;
+}
+
+#myCarousel {
+  margin-top: 51px;
+}
+
+#myCarousel .item {
+  min-height: 480px;
+  width: 100%;
+}
+
+#myCarousel .item .banner-content {
+  padding-top: 40px;
+  text-align: center;
+}
+
+#myCarousel .item .banner-content h1 {
+  color: #ffffff;
+  font-family: 'Lato';
+  font-size: 70px;
+  font-weight: bold;
+}
+
+#myCarousel .item .banner-content hr {
+  border: solid 1px #15a4fa;
+  width: 50%;
+}
+
+#myCarousel .item .banner-content p {
+  margin-top: 28px;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+#myCarousel .search-banner {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 50%;
+  text-align: center;
+}
+
+#myCarousel .search-banner form {
+  width: 40%;
+  margin-left: 30%;
+  height: 50px;
+}
+
+#myCarousel .search-banner form input {
+  height: 50px;
+  border-top-left-radius: 27px;
+  border-bottom-left-radius: 27px;
+}
+
+#myCarousel .search-banner form button {
+  height: 50px;
+  border-bottom-right-radius: 50%;
+  border-top-right-radius: 50%;
+}
+
+#myCarousel .search-banner form button i {
+  margin-left: -6px;
+}
+
+#myCarousel .search-banner .fa-angle-down {
+  color: #ffffff;
+  text-decoration: none;
+  margin-top: 135px;
+}
+
+.page--feature {
+  padding-top: 65px;
+  padding-bottom: 65px;
+  background-color: #f7f6f6;
+  text-align: center;
+}
+
+.page--feature h3 {
+  margin-top: 33px;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.page--feature p {
+  margin-left: 10%;
+  width: 80%;
+  color: #999999;
+  font-size: 15px;
+}
+
+.page--feature a {
+  height: 55px;
+  width: 180px;
+  margin-top: 50px;
+  padding-top: 13px;
+  border: solid 1px #15a4fa;
+  cursor: pointer;
+  font-size: 18px;
+  color: black;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.new-course .new-course-title h3 {
+  font-size: 41px;
+  margin-bottom: 20px;
+}
+
+.new-course .list-new-course .new-course-content {
+  min-height: 300px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.new-course .list-new-course .new-course-content .course-content {
+  border: 1px solid #cccccc;
+}
+
+.new-course .list-new-course .new-course-content .course-content .course-thumb {
+  position: relative;
+}
+
+.new-course .list-new-course .new-course-content .course-content .course-thumb img {
+  width: 100%;
+  height: 150px;
+}
+
+.new-course .list-new-course .new-course-content .course-content .course-thumb .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  margin: 0px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all;
+  transition: all;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #008CBA;
+}
+
+.new-course .list-new-course .new-course-content .course-content .course-thumb .overlay .infoCourse-button {
+  color: white;
+  font-size: 18px;
+  padding-top: 5px;
+  text-decoration: none;
+  height: 40px;
+  width: 120px;
+  border: 3px solid white;
+}
+
+.new-course .list-new-course .new-course-content .course-content .course-thumb .overlay .infoCourse-button:hover {
+  background-color: transparent;
+  border: 3px solid black;
+  color: black;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.new-course .list-new-course .new-course-content .course-content .course-thumb:hover .overlay {
+  opacity: 0.8;
+}
+
+.new-course .list-new-course .new-course-content .courseInfo hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.new-course .list-new-course .new-course-content .courseInfo .otherInfo {
+  margin-bottom: 10px;
+}
+
+.form--box {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+
+.form--box .form--title {
+  text-align: center;
+  margin-bottom: 53px;
+}
+
+.form--box .form--title h3 {
+  font-size: 41px;
+  color: #ffffff;
+  margin-bottom: 17px;
+}
+
+.form--box .form--title p {
+  font-size: 15px;
+  color: #999999;
+}
+
+.form--box #form-id .form-group {
+  width: 50%;
+  margin-left: 25%;
+}
+
+.form--box #form-id .form-group input {
+  height: 60px;
+}
+
+.form--box #form-id .form-group .form-control {
+  background: transparent;
+  border: solid 1px #999999;
+  color: #ffffff;
+  font-size: 17px;
+}
+
+.form--box #form-id .form-group span {
+  color: red;
+  font-size: 18px;
+}
+
+.form--box #form-id .form--submit {
+  margin-left: 25%;
+  width: 50%;
+  height: 50px;
+}
+
+.form--box #form-id .form--submit .row,
+.form--box #form-id .form--submit .row #remember_me,
+.form--box #form-id .form--submit .row #submit_btn,
+.form--box #form-id .form--submit .row #submit_btn button {
+  height: 100%;
+}
+
+.form--box #form-id .form--submit .row #remember_me,
+.form--box #form-id .form--submit .row #submit_btn button #remember_me {
+  padding-top: 11px;
+}
+
+.form--box #form-id .form--submit .row #remember_me label {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: normal;
+  margin-left: 10px;
+}
+
+.form--box #form-id .form--submit .row #submit_btn button {
+  background: transparent;
+  float: right;
+  width: 50%;
+}
+
+footer {
+  min-height: 98px;
+  color: #999999;
+}
+
+footer .container {
+  padding-top: 30px;
+}
+
+footer .container .copyright {
+  padding-top: 15px;
+  font-size: 15px;
+}
+
+footer .container .social {
+  text-align: right;
+}
+
+footer .container .social .fa:hover {
+  opacity: 0.7;
+  background-color: blue;
+}
+
