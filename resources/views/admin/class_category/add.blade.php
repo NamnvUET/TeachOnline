@@ -40,12 +40,20 @@
                                 {{csrf_field()}}
                                 <div class="box-body" id="form-body">
                                     <div class="form-group">
-                                        <label for="category_id">Category ID</label>
-                                        <input type="text" class="form-control" id="category_id" name="category_id" placeholder="Enter Category">
+                                        <label for="class_id">Class: </label>
+                                        <select class="form-control" name="class_id" required>
+                                            @foreach($classes as $class)
+                                                <option value="{{$class->id}}">{{$class->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="class_id">Class ID</label>
-                                        <input type="text" class="form-control" id="class_id" name="class_id" placeholder="Enter Class">
+                                        <label for="class_id">Category: </label>
+                                        <select class="form-control" name="category_id" required>
+                                            @foreach($categories as $category)
+                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <!-- /.box-body -->

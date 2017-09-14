@@ -36,24 +36,24 @@
                                 </div>
                             @endif
 
-                            <form action="{{ url('adminpage/class/modify/'.$class->id) }}" method="POST" enctype="multipart/form-data" id="uploadForm">
+                            <form action="{{ url('adminpage/class_category/modify/'.$class_category->id) }}" method="POST" enctype="multipart/form-data" id="uploadForm">
                                 {{csrf_field()}}
                                 <div class="box-body" id="form-body">
                                     <div class="form-group">
-                                        <label for="title">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" value="{{$class->name}}" placeholder="Enter Name" required>
+                                        <label for="class_id">Class: </label>
+                                        <input class= "form-control" type="text" value="{{$class_category->classes->name}}" readonly />
                                     </div>
                                     <div class="form-group">
-                                        <label for="description">Description</label>
-                                        <textarea col="30" row="10" class="form-control" id="description" placeholder="Enter Description" name="description" required>{{$class->description}}</textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="goal">Goal</label>
-                                        <textarea col="30" row="10" class="form-control" id="goal" placeholder="Enter goal" name="goal" required>{{$class->goal}}</textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="image">Image</label>
-                                        <input type="file" class="form-control" name="image" accept=".JPG, .PNG" required>
+                                        <label for="class_id">Category: </label>
+                                        <select class="form-control" name="category_id" required>
+                                            @foreach($categories as $category)
+                                                <option value="{{$category->id}}"
+                                                    @if($class_category->category_id == $category->id)
+                                                        {{"selected"}}
+                                                    @endif>
+                                                {{$category->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <!-- /.box-body -->

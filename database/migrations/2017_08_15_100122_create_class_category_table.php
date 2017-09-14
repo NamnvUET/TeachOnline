@@ -14,9 +14,10 @@ class CreateClassCategoryTable extends Migration
     public function up()
     {
         Schema::create('class_category', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('class_id');
             $table->integer('category_id');
-            $table->primary(['class_id', 'category_id']);
+//            $table->primary(['class_id', 'category_id']);
             $table->timestamps();
         });
     }

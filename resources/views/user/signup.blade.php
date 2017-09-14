@@ -21,7 +21,7 @@
     </script>
     <script src="{{asset('node_modules/bootstrap/dist/js/bootstrap.js')}}"></script>
     <link rel="stylesheet" href="public/css/signup.css">
-
+    <link rel="stylesheet" type="text/css" href="{{asset('public/css/homeHeader.css')}}">
 </head>
 <body>
 

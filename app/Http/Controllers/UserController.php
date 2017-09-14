@@ -46,6 +46,7 @@ class UserController extends Controller
             $path = "[teach-online]".str_random(10).'-'.$name;
             $file->move('public/avatar',$path);
             $user->avatar = $path;
+            $user->active = 1;
         }
         $user->save();
         return redirect('adminpage/user/add')->with('noti', 'Thêm thành công');

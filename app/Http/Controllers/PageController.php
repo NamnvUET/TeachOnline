@@ -224,7 +224,7 @@ class PageController extends Controller
         $lesson->user_id  = Auth::user()->id;
         $lesson->title = $request->title;
         $lesson->title_without_sign = changeTitle($request->title);
-
+        $lesson->want_check_comment = $request->want_check_comment;
         if($request->hasFile('document'))
         {
             $file = $request->file('document');

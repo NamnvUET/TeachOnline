@@ -105,23 +105,14 @@ Route::group(['prefix' => 'adminpage', 'middleware' => 'admin'], function (){
        Route::get('delete/{id}', 'categoryController@getDelete');
 
     });
-    //----------- Document ---------------//
-    Route::group(['prefix' => 'document'], function(){
-        Route::get('list', 'documentController@getList');
-        Route::get('add', 'documentController@getAdd');
-        Route::post('add', 'documentController@postAdd');
-        Route::get('modify/{id}', 'documentController@getModify');
-        Route::post('modify/{id}', 'documentController@postModify');
-        Route::get('delete/{id}', 'documentController@getDelete');
-    });
     //------------- Class Category --------------//
     Route::group(['prefix' => 'class_category'],function (){
         Route::get('list', 'class_categoryController@getList');
         Route::get('add', 'class_categoryController@getAdd');
         Route::post('add', 'class_categoryController@postAdd');
-        Route::get('modify/{class_id}', 'class_categoryController@getModify');
-        Route::post('modify/{class_id}', 'class_categoryController@postModify');
-        Route::get('delete/{class_id}', 'class_categoryController@getDelete');
+        Route::get('modify/{class_category_id}', 'class_categoryController@getModify');
+        Route::post('modify/{class_category_id}', 'class_categoryController@postModify');
+        Route::get('delete/{class_category_id}', 'class_categoryController@getDelete');
     });
     //--------- Comment -----------------//
     Route::group(['prefix' => 'comment'], function(){
@@ -129,13 +120,6 @@ Route::group(['prefix' => 'adminpage', 'middleware' => 'admin'], function (){
         Route::get('modify/{id}', 'commentController@getModify');
         Route::post('modify/{id}', 'commentController@postModify');
         Route::get('delete/{id}', 'commentController@getDelete');
-    });
-    //------------- Video -----------------//
-    Route::group(['prefix' => 'video'], function(){
-        Route::get('list', 'videoController@getList');
-        Route::get('modify/{id}', 'videoController@getModify');
-        Route::post('modify/{id}', 'videoController@postModify');
-        Route::get('delete/{id}', 'videoController@getDelete');
     });
 });
 

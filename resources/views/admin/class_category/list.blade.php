@@ -34,8 +34,8 @@
                             <table id="class_category_list" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Category</th>
                                     <th>Class</th>
+                                    <th>Category</th>
                                     <th>Created_at</th>
                                     <th>Updated_at</th>
                                     <th>Modify</th>
@@ -45,19 +45,19 @@
                                 <tbody>
                                 @foreach($class_category as $class_category_item)
                                     <tr>
-                                        <td>{{$class_category_item->category_id}}</td>
-                                        <td>{{$class_category_item->class_id}}</td>
+                                        <td>{{$class_category_item->classes->name}}</td>
+                                        <td>{{$class_category_item->category->name}}</td>
                                         <td>{{$class_category_item->created_at}}</td>
                                         <td>{{$class_category_item->updated_at}}</td>
-                                        <td class="text-center"><a href="{{ url('adminpage/class_category/modify/'.$class_category_item->class_id) }}"><button class="btn btn-warning"><span class="fa fa-edit"></span></button></a></td>
-                                        <td class="text-center"><a href="{{ url('adminpage/class_category/delete/'.$class_category_item->class_id) }}"><button class="btn btn-warning"><span class="fa fa-trash "></span></button></a></td>
+                                        <td class="text-center"><a href="{{ url('adminpage/class_category/modify/'.$class_category_item->id) }}"><button class="btn btn-warning"><span class="fa fa-edit"></span></button></a></td>
+                                        <td class="text-center"><a href="{{ url('adminpage/class_category/delete/'.$class_category_item->id) }}"><button class="btn btn-warning"><span class="fa fa-trash "></span></button></a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>Category</th>
                                     <th>Class</th>
+                                    <th>Category</th>
                                     <th>Created_at</th>
                                     <th>Updated_at</th>
                                     <th>Modify</th>

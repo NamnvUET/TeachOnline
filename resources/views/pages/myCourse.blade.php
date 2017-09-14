@@ -109,7 +109,11 @@
                                         <div class="course-content">
                                             <div class="link-course">
                                                 <div class="course-thumb">
-                                                    <img src="{{asset('public/image/image1.jpg')}}" alt="image1" style="width: 100%;height: 150px">
+                                                    @if($myclass->image)
+                                                        <img src="{{asset('public/image/'.$myclass->image)}}" alt="image1" style="width: 100%;height: 150px">
+                                                    @else
+                                                        <img src="{{asset('public/image/image1.jpg')}}" alt="image1" style="width: 100%;height: 150px">
+                                                    @endif
                                                     <div class="overlay flex-container text-center">
                                                         @if(Auth::check() && Auth::user()->hasClass($myclass->id))
                                                             <a href="{{url('learn/class/'.$myclass->id.'/'.$myclass->name_without_sign)}}" class="infoCourse-button" aria-hidden="true" style="text-decoration: none">Học tiếp</a>

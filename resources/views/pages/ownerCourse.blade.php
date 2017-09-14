@@ -108,7 +108,11 @@
                                         <div class="course-content">
                                             <div class="link-course">
                                                 <div class="course-thumb">
-                                                    <img src="{{asset('public/image/image1.jpg')}}" alt="image1" style="width: 100%;height: 150px">
+                                                    @if($myOwnerClass->image)
+                                                        <img src="{{asset('public/image/'.$myOwnerClass->image)}}" alt="image1" style="width: 100%;height: 150px">
+                                                    @else
+                                                        <img src="{{asset('public/image/image1.jpg')}}" alt="image1" style="width: 100%;height: 150px">
+                                                    @endif
                                                     <div class="overlay flex-container text-center">
                                                         @if(Auth::check() && Auth::user()->isOwner($myOwnerClass->id))
                                                             <a href="{{url('manageClass/'.$myOwnerClass->id.'/'.$myOwnerClass->name_without_sign)}}" class="infoCourse-button" aria-hidden="true" style="text-decoration: none">Quản lí</a>

@@ -11,11 +11,11 @@ class Class_Category extends Model
 
     public function category()
     {
-        return $this->hasMany('App\Categories', 'id', 'category_id');
+        return $this->hasOne('App\Categories', 'id', 'category_id');
     }
 
     public function classes()
     {
-        return $this->hasMany('App\Classes', 'id', 'class_id');
+        return $this->hasOne('App\Classes', 'id', 'class_id');
     }
 }

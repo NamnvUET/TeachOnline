@@ -138,6 +138,13 @@
                                     <input type="text" class="form-control" id="title" name="title" placeholder="title">
                                 </div>
                                 <div class="form-group">
+                                    <label for="want_check_comment">Duyệt Comment</label>
+                                    <select class="form-control" name="want_check_comment" required>
+                                        <option value="0">Không</option>
+                                        <option value="1">Có</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="document">Document</label>
                                     <input type="file" class="form-control" name="document" accept=".pdf" required>
                                 </div>

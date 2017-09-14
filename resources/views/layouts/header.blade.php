@@ -1,3 +1,4 @@
+<style src=></style>
 <header>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
@@ -43,9 +44,10 @@
                         </ul>
                     </li>
                     <li>
-                        <form action="#" method="post" class="navbar-form" id="header-search">
+                        <form action="{{url('search')}}" method="post" class="navbar-form" id="header-search">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="k" placeholder="Nhập từ khóa cần tìm....">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="text" class="form-control" name="keyword" placeholder="Nhập từ khóa cần tìm....">
                                 <span class="input-group-btn">
                                     <button class="btn btn-primary keyword" style="width:50px;" type="submit"><i class="fa fa-search"></i></button>
                                 </span>
@@ -61,7 +63,12 @@
                         <li><a href="{{url('myCourse')}}">Khóa học của tôi</a></li>
                         <li class="dropdown user-dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <img src="{{asset('node_modules/admin-lte/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+                                @if(Auth::user()->avatar)
+                                    <img src="{{asset('public/avatar/'.Auth::user()->avatar)}}" class="img-circle" alt="User Image">
+                                @else
+                                    <img src="{{asset('node_modules/admin-lte/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+                                @endif
+
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{url('myCourse')}}">Khóa học của tôi</a></li>

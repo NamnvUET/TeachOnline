@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Categories;
+use App\Classes;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -18,7 +20,9 @@ class class_categoryController extends Controller
     }
     public function getAdd()
     {
-        return view('admin.class_category.add');
+        $classes = Classes::all();
+        $categories = Categories::all();
+        return view('admin.class_category.add', ['classes' => $classes, 'categories' => $categories]);
     }
 
     public function postAdd(Request $request)
@@ -37,8 +41,18 @@ class class_categoryController extends Controller
             return redirect('adminpage/class_category/add')->with('noti', 'Thêm thành công');
         }
     }
-    public function getModìy()
+    public function getModify($class_category_id)
     {
+        $class_category = Class_Category::find($class_category_id);
+        $categories = Categories::all();
+        return view('admin.class_category.modify', ['class_category' => $class_category, 'categories' => $categories]);
+    }
+    public function postModify($class_category_id, Request $request)
+    {
+        $class_category = Class_Category::find($class_category_id);
+        $class_category->category_id = $request->category_id;
 
+        $class_category->save();
+        return redirect('adminpage/class_category/modify/'.$class_category_id)->with('noti', 'Sửa thành công');
     }
 }
