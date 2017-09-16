@@ -36,7 +36,7 @@
                                                                                             aria-controls="home"
                                                                                             role="tab"
                                                                                             data-toggle="tab">Danh sách
-                                bài học</a></li>
+                                </a></li>
                         <li role="presentation" class="tab_li" style="width: 70%"><a href="#nav_tab2"
                                                                                      aria-controls="profile" role="tab"
                                                                                      data-toggle="tab">Bình luận</a>
@@ -52,7 +52,7 @@
                                         <div class="unitCourse col-xs-12"
                                              style="border-bottom: 1px solid #dedede;padding-top: 10px; background-color: #f3f3f3">
                                             <div class="row">
-                                                <div class="col-xs-10 unit" style="font-size: 22px;height: 40px">
+                                                <div class="col-xs-10 unit" style="font-size: 18px;height: 40px">
                                                     <i class="fa fa-play-circle"></i>
                                                     {{$samelesson->title}}
                                                 </div>
@@ -62,6 +62,7 @@
                                             </div>
                                         </div>
                                     @endforeach
+                                    {{$sameClassLesson->render()}}
                                 @else
                                     <p class="text-center" style="padding-top: 20px">Hiện tại khóa học này chưa có bài
                                         học nào cả</p>

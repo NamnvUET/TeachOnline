@@ -20,11 +20,21 @@
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous">
     </script>
-    <script src="{{asset('node_modules/bootstrap/dist/js/bootstrap.js')}}"></script>
+
     <link rel="stylesheet" type="text/css" href="{{asset('public/css/homeHeader.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('public/css/homeBody.css')}}">
-    <style>
-    </style>
+
+    <!-- Bootstrap 3.3.6 -->
+    <script src="{{asset('node_modules/admin-lte/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!-- DataTables -->
+    <script src="{{asset('node_modules/admin-lte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('node_modules/admin-lte/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+    <!-- SlimScroll -->
+    <script src="{{asset('node_modules/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
+    <!-- FastClick -->
+    <script src="{{asset('node_modules/admin-lte/plugins/fastclick/fastclick.js')}}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{asset('node_modules/admin-lte/dist/js/app.min.js')}}"></script>
 
 </head>
 <body>

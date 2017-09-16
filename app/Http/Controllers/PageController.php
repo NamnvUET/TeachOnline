@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Documents;
-
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -15,8 +13,6 @@ use App\Categories;
 use App\Class_Category;
 
 use App\Classes;
-
-use App\Videos;
 
 use App\Lessons;
 
@@ -64,11 +60,11 @@ class PageController extends Controller
         $keyword = $request->keyword;
         $key_no_sign = changeTitle($keyword);
         $categories = Categories::where('name_without_sign' ,'like' , "%$key_no_sign%")
-            ->orWhere('description' , 'like', "%$keyword%")->paginate(4);
+            ->orWhere('description' , 'like', "%$keyword%")->get();
         $classes = Classes::where('name_without_sign', 'like', "%$key_no_sign%")
                     ->orWhere('description', 'like', "%$keyword%")
-                    ->orWhere('goal', 'like', "%$keyword%")->paginate(4);
-        $lessons = Lessons::where('title_without_sign', 'like', "%$key_no_sign%")->paginate(4);
+                    ->orWhere('goal', 'like', "%$keyword%")->get();
+        $lessons = Lessons::where('title_without_sign', 'like', "%$key_no_sign%")->get();
         return view('pages.home')->with(['classes' => $classes, 'categories' => $categories, 'lessons' => $lessons,'keyword' => $keyword]);
     }
 
@@ -120,7 +116,7 @@ class PageController extends Controller
         $class = $lesson->classes;
         if(Auth::User()->hasClass($class->id))
         {
-            $sameClassLesson = Lessons::where('class_id', '=', $class->id)->get();
+            $sameClassLesson = Lessons::where('class_id', '=', $class->id)->paginate(10);
             if($lesson->want_check_comment == 1)
             {
                 $comments = Comments::where(['lesson_id' => $lesson_id, 'is_checked' => 1])->orderBy('created_at')->get();

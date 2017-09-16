@@ -146,9 +146,6 @@
                                     @endforeach
                                 </ul>
                             </div>
-                            <div class="col-xs-12">
-                                {{ $categories->render() }}
-                            </div>
                         @endif
                     <hr style="border: 2px solid #cccccc">
 
@@ -185,9 +182,9 @@
                                         </div>
                                     @endforeach
                                 </div>
-                                <div class="col-xs-12">
-                                    {{ $classes->render() }}
-                                </div>
+                                {{--<div class="col-xs-12">--}}
+                                    {{--{{ $classes->render() }}--}}
+                                {{--</div>--}}
                         @else
                             <span>Không có kết quả phù hợp</span>
                         @endif
@@ -196,31 +193,38 @@
                     <h4><b>Bài học</b></h4>
                     <div class="col-md-12 text-left">
                         @if(count($lessons) > 0)
-                            @foreach($lessons as $lesson)
-                                <div class="unitCourse col-xs-12" style="border-bottom: 1px solid #dedede;padding-top: 10px">
-                                    <div class="row">
-                                        <div class="col-xs-10 unit" style="font-size: 22px;height: 40px">
-                                            <i class="fa fa-play-circle"></i>
-                                            {{$lesson->title}} - Khóa: {{$lesson->classes->name}}
-                                            @if(Auth::User()->hasClass($lesson->classes->id))
-                                                - (Đã tham gia)
-                                            @else
-                                                - (Chưa tham gia)
-                                            @endif
-                                        </div>
-                                        <div class="col-xs-2 join">
-                                            @if(Auth::User()->hasClass($lesson->classes->id))
-                                                <a href="{{url('/lesson/'.$lesson->id.'/'.$lesson->title_without_sign)}}">Xem bài học</a>
-                                            @else
-                                                <a href="{{url('class/'.$lesson->classes->id.'/'.$lesson->classes->name_without_sign)}}">Đăng kí để xem</a>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                                <div class="col-xs-12">
-                                    {{ $lessons->render() }}
-                                </div>
+                            <table id="search-result-lesson" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th width="30%">Tên</th>
+                                        <th width="20%">Khóa học</th>
+                                        <th>Trạng thái</th>
+                                        <th>Chi tiết</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($lessons as $lesson)
+                                        <tr>
+                                            <td>{{$lesson->title}}</td>
+                                            <td>{{$lesson->classes->name}}</td>
+                                            <td>
+                                                @if(Auth::check() && Auth::User()->hasClass($lesson->classes->id))
+                                                    Đã tham gia
+                                                @else
+                                                    Chưa tham gia
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if(Auth::check() && Auth::User()->hasClass($lesson->classes->id))
+                                                    <a href="{{url('/lesson/'.$lesson->id.'/'.$lesson->title_without_sign)}}">Xem bài học</a>
+                                                @else
+                                                    <a href="{{url('class/'.$lesson->classes->id.'/'.$lesson->classes->name_without_sign)}}">Đăng kí để xem</a>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         @else
                             <p class="text-left" style="padding-top: 20px">Không có kết quả phù hợp</p>
                         @endif
@@ -287,4 +291,11 @@
         </div>
     </footer>
 
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{asset('node_modules/admin-lte/dist/js/demo.js')}}"></script>
+    <script>
+        $(function () {
+            $("#search-result-lesson").DataTable({bFilter: false, bInfo: false, bLengthChange: false});
+        });
+    </script>
 @endsection

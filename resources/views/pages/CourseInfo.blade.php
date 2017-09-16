@@ -37,9 +37,13 @@
                                 <span>{{$class->goal}}</span>
                                 <hr>
                             </div>
-                            <div class="registerClass text-center">
-                                <a href="{{url('registerClass'.'/'.Auth::user()->id.'/'.$class->id)}}" class="btn btn-primary">Đăng kí tham gia</a>
-                            </div>
+                            @if(!Auth::check())
+                                <h4 class="text-center">Bạn cần phải đăng nhập để đăng kí</h4>
+                            @else
+                                <div class="registerClass text-center">
+                                    <a href="{{url('registerClass'.'/'.Auth::user()->id.'/'.$class->id)}}" class="btn btn-primary">Đăng kí tham gia</a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
