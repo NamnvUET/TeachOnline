@@ -29,7 +29,7 @@
                                     <div class="row">
                                         @foreach($categories as $category)
                                         <div class="col-sm-4">
-                                            <a href="{{url('category/'.$category->id.'/'.$category->name_without_sign)}}" style="text-decoration: none">
+                                            <a href="{{url('category/'.$category->id.'/'.$category->name_without_sign)}}" data-toggle="tooltip" title = "{{$category->description}}" style="text-decoration: none">
                                                 <i class="fa fa-database"></i>
                                                 <span>{{$category->name}}</span>
                                             </a>

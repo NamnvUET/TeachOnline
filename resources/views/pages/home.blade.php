@@ -139,7 +139,7 @@
                                 <ul>
                                     @foreach($categories as $category)
                                         <li>
-                                            <a href="{{url('category/'.$category->id.'/'.$category->name_without_sign)}}" style="text-decoration: none">
+                                            <a href="{{url('category/'.$category->id.'/'.$category->name_without_sign)}}" data-toggle="tooltip" title = "{{$category->description}}" style="text-decoration: none">
                                             <span>{{$category->name}}</span>
                                             </a>
                                         </li>
@@ -151,7 +151,7 @@
 
                     <h4><b>Khóa học</b></h4>
                         @if(count($classes) > 0)
-                                <div class="col-md-12">
+                                <div class="col-md-12" id="search-result-course">
                                     @foreach($classes as $class)
                                         <div class="col-md-3 new-course-content">
                                             <div class="course-content">
@@ -296,6 +296,11 @@
     <script>
         $(function () {
             $("#search-result-lesson").DataTable({bFilter: false, bInfo: false, bLengthChange: false});
+        });
+        $('#search-result-course').slick({
+            infinite: true,
+            slidesToShow: 4,
+            slidesToScroll: 4,
         });
     </script>
 @endsection
