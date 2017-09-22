@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-md-5 imageHeaderCourseStatus" style="padding-top: 3%;padding-bottom: 3%">
                     <div class="row">
-                        <img src="{{asset('public/image/image1.jpg')}}" alt="img1" width="480px" height="270px" style="width: 100%">
+                        <img src="{{asset('public/image/'.$class->image)}}" alt="img1" width="480px" height="270px" style="width: 100%">
                     </div>
                 </div>
                 <div class="col-md-7 rightHeaderCourseStatus" style="padding: 3%">

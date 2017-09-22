@@ -14,19 +14,6 @@
                     <div class="panel-body">
                         <embed src="public/document/{{ $lesson->path }}" width="100%" height="600px" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
                     </div>
-                    {{--<div class="panel-footer">--}}
-                        {{--<div class="row">--}}
-                            {{--<div class="col-xs-4">--}}
-                                {{--<a href="#"><i class="fa fa-arrow-left fa-2x"></i></a>--}}
-                            {{--</div>--}}
-                            {{--<div class="col-xs-4">--}}
-                                {{--<a href="#"><i class="fa fa-arrow-left fa-2x"></i></a>--}}
-                            {{--</div>--}}
-                            {{--<div class="col-xs-4">--}}
-                                {{--<a href="#"><i class="fa fa-arrow-left fa-2x"></i></a>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
                 </div>
             </div>
             <div class="col-xs-4">

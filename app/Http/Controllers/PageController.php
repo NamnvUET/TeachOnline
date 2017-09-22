@@ -139,13 +139,13 @@ class PageController extends Controller
         $myClasses = Classes::whereIn('id', $myClassID)->paginate(6);
         return view('pages.myCourse')->with(['myclasses' => $myClasses]);
     }
-
+    //Lấy danh sách các khóa học đã tạo
     public function getOwnerCourse()
     {
         $myOwnerClasses = Classes::where('user_id', '=', Auth::user()->id)->paginate(6);
         return view('pages.ownerCourse')->with(['myOwnerClasses' => $myOwnerClasses]);
     }
-
+    //Lấy giao diện sửa một khóa học đã tạo
     public function getModifyClass($class_id)
     {
         if(Auth::user()->isOwner($class_id))
@@ -157,7 +157,7 @@ class PageController extends Controller
             return redirect('home');
         }
     }
-
+    //Lấy danh sách bài học trong một khóa học đã tạo
     public function getListLesson($class_id)
     {
         if(Auth::user()->isOwner($class_id))
@@ -171,7 +171,7 @@ class PageController extends Controller
             return redirect('home');
         }
     }
-
+    //Sửa một khóa học đã tạo
     public function postModifyClass($class_id, Request $request)
     {
         if(Auth::user()->isOwner($class_id))
@@ -199,7 +199,7 @@ class PageController extends Controller
             return redirect('home');
         }
     }
-
+    //Lấy giao diện thêm bài học
     public function getAddLesson($class_id)
     {
         if(Auth::user()->isOwner($class_id))
@@ -211,13 +211,12 @@ class PageController extends Controller
             return redirect('home');
         }
     }
-
+    //Thê mới một bài học
     public function postAddLesson($class_id, Request $request)
     {
         $class = Classes::find($class_id);
         $lesson = new Lessons;
         $lesson->class_id = $class_id;
-        $lesson->user_id  = Auth::user()->id;
         $lesson->title = $request->title;
         $lesson->title_without_sign = changeTitle($request->title);
         $lesson->want_check_comment = $request->want_check_comment;
@@ -235,7 +234,7 @@ class PageController extends Controller
         $lesson->save();
         return redirect('manageClass/'.$class_id. '/'.$class->name_without_sign. '/addLesson')->with('noti', 'Thêm bài học thành công');
     }
-
+    //Lấy giao diện sửa bài học
     public function getModifyLesson($class_id, $class_name, $lesson_id)
     {
         if(Auth::user()->isOwner($class_id))
@@ -249,7 +248,7 @@ class PageController extends Controller
             return redirect('home');
         }
     }
-
+    //Sửa một bài học
     public function postModifyLesson($class_id, $class_name, $lesson_id, Request $request)
     {
         $class = Classes::find($class_id);
@@ -274,7 +273,7 @@ class PageController extends Controller
         return redirect('manageClass/'.$class->id.'/'.$class->name_without_sign.'/modifyLesson/'.$lesson->id)->with('noti', 'Sửa bài học thành công');
 
     }
-
+    //Xóa một bài học
     public function postDeleteLesson($class_id, $class_name, $lesson_id)
     {
         $class = Classes::find($class_id);
@@ -282,7 +281,7 @@ class PageController extends Controller
         $lesson->delete();
         return redirect('manageClass/'.$class_id.'/'.$class->name_without_sign.'/listLesson')->with('noti', 'Xóa bài học thành công');
     }
-
+    //Lấy danh sách tất cả comment
     public function getAllComment($class_id,$class_name,$lesson_id)
     {
         $lesson = Lessons::find($lesson_id);
@@ -290,7 +289,7 @@ class PageController extends Controller
         $comments = Comments::where('lesson_id', '=', $lesson->id)->orderBy('created_at')->get();
         return view('pages.ModifyAndUpload.listComment')->with(['lesson' => $lesson, 'class' => $class, 'comments' => $comments]);
     }
-
+    //Lấy danh sách các comment chưa được duyệt
     public function  getDuyetComment($class_id, $class_name, $lesson_id)
     {
         $lesson = Lessons::find($lesson_id);
@@ -298,14 +297,14 @@ class PageController extends Controller
         $comment = Comments::where(['lesson_id' => $lesson_id, 'is_checked' => 0])->orderBy('created_at')->get();
         return view('pages.ModifyAndUpload.listComment')->with(['lesson' => $lesson, 'class' => $class, 'comments' => $comment, 'duyet' => 1]);
     }
-
+    //Xóa comment
     public function getDeleteComment($class_id, $class_name, $lesson_id, $comment_id)
     {
         $comment = Comments::find($comment_id);
         $comment->delete();
         return redirect('manageClass/'.$class_id.'/'.$class_name.'/'.$lesson_id.'/allcomment')->with('noti', 'Xóa thành công');
     }
-
+    //Duyệt comment
     public function getChophep($class_id, $class_name, $lesson_id, $comment_id)
     {
         $comment = Comments::find($comment_id);

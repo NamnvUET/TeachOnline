@@ -33,15 +33,22 @@ Route::get('lesson/{lesson_id?}/{name?}', 'PageController@getLesson');
 
 Route::post('comment/{lesson_id?}/{name?}', 'commentController@postComment');
 
+//Khóa học của tôi
+
 Route::get('myCourse', 'PageController@getMyCourse');
 
+//Khóa học đã tạo
 Route::get('ownerCourse', 'PageController@getOwnerCourse');
 
+// Chọn một khóa học đã tạo và vào trang Chỉnh sửa khóa học đã tạo
 Route::get('manageClass/{class_id?}/{name?}', 'PageController@getModifyClass');
 
 Route::post('manageClass/{class_id?}/{name?}', 'PageController@postModifyClass');
 
+//Lấy danh sách bài học trong một khóa học đã tạo
 Route::get('manageClass/{class_id?}/{name?}/listLesson', 'PageController@getListLesson');
+
+//Thêm mới một bài học vào một khóa học đã tạo
 
 Route::get('manageClass/{class_id?}/{name?}/addLesson', 'PageController@getAddLesson');
 

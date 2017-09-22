@@ -54,11 +54,11 @@ class User extends Authenticatable
         $temp = Student_Of_Class::where(['class_id' => $class_id, 'user_id' => $user_id])->get();
         if(count($temp) > 0)
         {
-            return true;
+            return true; // Trả về true nếu người dùng hiện tại đã tham gia khóa học
         }
         else
         {
-            return false;
+            return false; //Trả về false nếu người dùng hiện tại chưa tham gia khóa học
         }
     }
 

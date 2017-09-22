@@ -31,7 +31,6 @@ class lessonController extends Controller
         if(count($class) == 0){
             return redirect('adminpage/lesson/add')->with('noti', 'Lớp học không tồn tại');
         }
-        $lesson->user_id = $class->user_id;
         $lesson->title = $request->title;
         $lesson->title_without_sign = changeTitle($request->title);
         $lesson->want_check_comment = $request->want_check_comment;
